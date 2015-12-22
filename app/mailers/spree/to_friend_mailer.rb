@@ -16,7 +16,7 @@ class Spree::ToFriendMailer < ActionMailer::Base
       bucket = s3.buckets['jcauto']
       @object.images.each_with_index do |image, index|
         file_url = image.attachment.url(:large)
-        key = url.split('spree/')[1]
+        key = file_url.split('spree/')[1]
         key.gsub!(/\?.*/, "")
         my_attachment = bucket.objects['spree/' + key]
         if my_attachment
