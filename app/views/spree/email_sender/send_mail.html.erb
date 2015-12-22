@@ -26,6 +26,6 @@
     <%= recaptcha_tags public_key: Spree::Captcha::Config[:public_key], display: { theme: Spree::Captcha::Config[:theme] } %>
   <% end %>
   <p>
-    <%= f.submit Spree.t('email_to_friend.send_message') %>
+    <%= f.submit Spree.t('email_to_friend.send_message'), class: "btn btn-primary" %>
   </p>
 <% end -%>

@@ -6,10 +6,11 @@
 
 	<% if attachments.length > 1 %>
     <br><hr>
-	  <% attachments.each_with_index do |attachment, index| %>
+	  	<% attachments.each_with_index do |attachment, index| %>
 		  <% next if index + 1 == attachments.length %>
 		  <%= image_tag attachments["product-#{index+1}.png"].url, alt: '', style: "width: 35%; margin-top: 20px; float: left" %>
 		<% end %>
+	<div style="clear: both;"></div>
 	<br><hr>
 	<% end %>
 
