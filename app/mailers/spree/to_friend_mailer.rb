@@ -6,6 +6,25 @@ class Spree::ToFriendMailer < ActionMailer::Base
     @mail = mail
     opts = {}
 
+    # JC Auto Logo
+    attachments.inline['Logo.png'] = File.read(Rails.root.join("public", "Logo-new.png"))
+
+    # Add object image
+    if @object.is_a?(Spree::Product) && @object.images.length > 0
+      # Make an object in your bucket for your upload
+      s3 = AWS::S3.new
+      bucket = s3.buckets['jcauto']
+      @object.images.each_with_index do |image, index|
+        file_url = image.attachment.url(:large)
+        key = url.split('spree/')[1]
+        key.gsub!(/\?.*/, "")
+        my_attachment = bucket.objects['spree/' + key]
+        if my_attachment
+          attachments.inline["product-#{index+1}.png"] = my_attachment.read
+        end
+      end
+    end
+
     opts[:to] = mail.recipients
     default_url_options[:host] = mail.host
     opts[:subject] =  mail.subject

@@ -1,0 +1,33 @@
+<p><%= @mail.recipient_name %>,</p>
+
+<p><%= Spree.t(:you_would_like_this_item, scope: :email_to_friend) %></p>
+
+  <p><span style="font-weight: 600"><%= @object.name %></span>: <%= @object.description %></p>
+
+	<% if attachments.length > 1 %>
+    <br><hr>
+	  <% attachments.each_with_index do |attachment, index| %>
+		  <% next if index + 1 == attachments.length %>
+		  <%= image_tag attachments["product-#{index+1}.png"].url, alt: '', style: "width: 35%; margin-top: 20px; float: left" %>
+		<% end %>
+	<% end %>
+
+<p>
+<% unless @mail.message.blank? -%>
+<%= @mail.message %>
+<% end -%>
+</p>
+
+<p>
+<%= @mail.sender_name %>
+</p>
+
+<p><%= Spree.t(:click_link_to_view, scope: :email_to_friend, name: @object.name) %><br>
+<%= spree.product_url(@object) %></p>
+
+<p><%= Spree.t(:visit_page, scope: :email_to_friend, url: spree.products_url) %></p>
+
+<p>
+  <a href="http://www.jcauto.com" target="_blank" style="text-decoration: none;">JC Auto Restoration, Inc.</a><br>
+  <%= image_tag attachments['Logo.png'].url, alt: '', style: "width: 35%; margin-top: 20px" %>
+</p>

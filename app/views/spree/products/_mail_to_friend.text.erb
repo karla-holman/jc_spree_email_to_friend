@@ -2,7 +2,7 @@
 
 <%= Spree.t(:you_would_like_this_item, scope: :email_to_friend) %>
 
-  * <%= @object.name %>
+  <%= @object.name %>: <%= @object.description %>
 
 <% unless @mail.message.blank? -%>
 <%= @mail.message %>
@@ -14,3 +14,5 @@
 <%= spree.product_url(@object) %>
 
 <%= Spree.t(:visit_page, scope: :email_to_friend, url: spree.products_url) %>
+
+<%= image_tag attachments['Logo.png'].url, alt: '', style: "width: 35%; margin-top: 20px" %>

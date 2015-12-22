@@ -5,9 +5,10 @@ class Spree::EmailSenderController < Spree::StoreController
   before_action :find_object
 
   def send_mail
+    # build form
     if request.get?
       @mail_to_friend = Spree::MailToFriend.new(sender_email: spree_current_user.try(:email))
-    else
+    else # send message
       mail_to_friend
     end
   end
