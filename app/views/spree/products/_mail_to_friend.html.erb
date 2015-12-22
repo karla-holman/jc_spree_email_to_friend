@@ -10,6 +10,7 @@
 		  <% next if index + 1 == attachments.length %>
 		  <%= image_tag attachments["product-#{index+1}.png"].url, alt: '', style: "width: 35%; margin-top: 20px; float: left" %>
 		<% end %>
+	<br><hr>
 	<% end %>
 
 <p>
@@ -19,6 +20,7 @@
 </p>
 
 <p>
+From,<br>	
 <%= @mail.sender_name %>
 </p>
 
@@ -29,5 +31,5 @@
 
 <p>
   <a href="http://www.jcauto.com" target="_blank" style="text-decoration: none;">JC Auto Restoration, Inc.</a><br>
-  <%= image_tag attachments['Logo.png'].url, alt: '', style: "width: 35%; margin-top: 20px" %>
+  <%= image_tag attachments['Logo.png'].url, alt: '', style: "width: 200px; margin-top: 20px" %>
 </p>
