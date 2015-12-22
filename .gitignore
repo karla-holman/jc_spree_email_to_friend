@@ -1,0 +1,9 @@
+*.swp
+spec/test_app
+Gemfile.lock
+.rvmrc
+spec/dummy
+tmp
+coverage
+.ruby-version
+.ruby-gemset
