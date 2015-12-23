@@ -1,4 +1,4 @@
-<h1><%= Spree.t('email_to_friend.tell_about', product: @object.name) %></h1>
+<h2><%= Spree.t('email_to_friend.tell_about', product: @object.name) %></h2>
 
 <%= form_for(@mail_to_friend, url: email_to_friend_path(params[:type], @object)) do |f| -%>
   <%= render 'spree/shared/error_messages', target: @mail_to_friend %>
